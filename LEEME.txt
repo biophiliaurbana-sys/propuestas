@@ -1,0 +1,3 @@
+Carpeta para publicar en GitHub Pages (repositorio "propuestas").
+Las páginas se copian desde clientes/<cliente>/web/index.html y documentos/propuestas/<negocio>/web/index.html:
+si cambias una, vuelve a copiarla aquí y publica de nuevo.

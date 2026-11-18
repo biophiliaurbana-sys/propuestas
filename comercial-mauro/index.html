@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Comercial Mauro · Para empezar</title>
+<meta name="description" content="Tu plan de contenido para redes y los datos para empezar">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600;700;800&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+/* PÁGINA PARA UN CLIENTE QUE YA DIJO QUE SÍ: le recuerda lo que incluye el plan, confirma sus datos y arma la lista de
+   productos a destacar (con foto). Las respuestas llegan al WhatsApp de CONFIG; las fotos se mandan después con el menú
+   "Compartir" del celular (no hay servidor: todo queda en el celular del cliente). */
+:root{--verde:#2f4f43;--cafe:#9a5b23;--amarillo:#e9b949;--fondo:#f6efe4;--carta:#fff;--tinta:#2a2018;--suave:#6b5e52;--linea:#e4dacb}
+*{box-sizing:border-box}
+body{margin:0;background:var(--fondo);color:var(--tinta);font:16px/1.5 Inter,system-ui,sans-serif}
+main{max-width:640px;margin:0 auto;padding:0 16px 120px}
+header{background:var(--verde);color:#fff;padding:28px 20px 26px;margin:0 -16px 18px;border-bottom:6px solid var(--amarillo);display:flex;gap:16px;align-items:center}
+header svg{width:84px;height:84px;border-radius:50%;flex:none}
+header small{color:var(--amarillo);font-weight:700;letter-spacing:.06em;text-transform:uppercase;font-size:12px}
+h1,h2,h3{font-family:Poppins,sans-serif;line-height:1.15;margin:0}
+h1{font-size:26px;margin:4px 0 6px}
+header p{margin:0;opacity:.85;font-size:15px}
+h2{font-size:20px;color:var(--verde);margin:28px 0 10px}
+h3{font-size:16px;margin-bottom:3px}
+.cifras{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}
+.cifras div{background:var(--carta);border:1px solid var(--linea);border-radius:14px;padding:14px;text-align:center}
+.cifras b{display:block;font-family:Poppins;font-size:30px;color:var(--cafe);line-height:1}
+.cifras span{font-size:14px;color:var(--suave)}
+.pasos{counter-reset:p;display:grid;gap:12px}
+.paso{display:flex;gap:12px;align-items:flex-start}
+.paso::before{counter-increment:p;content:counter(p);flex:none;width:30px;height:30px;border-radius:50%;background:var(--verde);color:#fff;font:700 15px Poppins;display:flex;align-items:center;justify-content:center;margin-top:1px}
+.precios{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.precio{border-radius:14px;padding:14px;border:2px solid var(--amarillo);background:var(--carta)}
+.precio.fuerte{background:var(--verde);border-color:var(--verde);color:#fff}
+.precio small{font-weight:700;font-size:12px;text-transform:uppercase;opacity:.8}
+.precio b{display:block;font-family:Poppins;font-size:28px;line-height:1.15}
+.dos{display:grid;gap:12px;margin-top:12px}
+.carta{background:var(--carta);border:1px solid var(--linea);border-radius:16px;padding:14px 16px}
+ul{padding-left:20px;margin:6px 0}
+li{margin-bottom:5px}
+.preg{background:var(--carta);border:1px solid var(--linea);border-radius:16px;padding:16px;margin-bottom:12px}
+.t{display:block;font-family:Poppins;font-weight:700;font-size:16px;margin-bottom:4px}
+.ay{font-size:14px;color:var(--suave);margin-bottom:10px}
+input[type=text],textarea{width:100%;font:inherit;border:1.5px solid var(--linea);border-radius:10px;padding:11px 12px;background:#fff;color:var(--tinta)}
+textarea{min-height:70px;resize:vertical}
+input:focus,textarea:focus{outline:none;border-color:var(--verde)}
+.chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px}
+.chip{border:1.5px solid var(--linea);background:#fff;border-radius:999px;padding:8px 14px;font:inherit;font-size:15px;cursor:pointer;color:var(--tinta)}
+.chip.on{background:var(--verde);border-color:var(--verde);color:#fff}
+/* productos a destacar */
+.producto{display:grid;grid-template-columns:92px 1fr;gap:12px;padding:14px 0;border-top:1px solid var(--linea)}
+.producto:first-child{border-top:0;padding-top:4px}
+.foto{position:relative;width:92px;height:92px;border-radius:12px;border:2px dashed var(--linea);background:#faf6ef center/cover no-repeat;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;color:var(--suave);font-size:12px;text-align:center;cursor:pointer;overflow:hidden}
+.foto.con{border:0}
+.foto.con span{display:none}
+.foto em{font-style:normal;font-size:26px;line-height:1}
+.foto input{position:absolute;inset:0;opacity:0;cursor:pointer}
+.num{position:absolute;left:6px;top:6px;background:var(--verde);color:#fff;font:700 12px Poppins;border-radius:999px;padding:1px 8px;z-index:1}
+.campos{display:grid;gap:8px}
+.campos .dos2{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.quitar{justify-self:start;border:0;background:none;color:#b3261e;font:600 14px Inter;padding:2px 0;cursor:pointer}
+.sumar{width:100%;border:2px dashed var(--verde);background:#fff;color:var(--verde);border-radius:12px;padding:12px;font:700 16px Poppins;cursor:pointer;margin-top:8px}
+.barra{position:fixed;left:0;right:0;bottom:0;background:#fffffff2;border-top:1px solid var(--linea);padding:12px 16px calc(12px + env(safe-area-inset-bottom))}
+.barra div{max-width:640px;margin:0 auto;display:flex;align-items:center;gap:12px}
+.progreso{flex:1;font-size:13px;color:var(--suave)}
+.progreso i{display:block;height:6px;border-radius:9px;background:var(--linea);margin-top:5px;overflow:hidden}
+.progreso i b{display:block;height:100%;background:var(--amarillo);width:0}
+button.enviar{border:0;border-radius:999px;background:#1fa855;color:#fff;font:700 16px Poppins,sans-serif;padding:13px 20px;cursor:pointer;white-space:nowrap}
+#paso2{display:none;position:fixed;inset:0;background:#000a;z-index:10;align-items:center;justify-content:center;padding:16px}
+#paso2 .caja{background:#fff;border-radius:18px;padding:22px;max-width:420px;text-align:center}
+#paso2 p{color:var(--suave)}
+#paso2 button{display:block;width:100%;margin-top:10px}
+.sec{border:1.5px solid var(--linea);background:#fff;color:var(--tinta);border-radius:999px;padding:12px;font:600 15px Inter;cursor:pointer}
+footer{color:var(--suave);font-size:13px;text-align:center;margin-top:24px}
+</style></head>
+<body><main>
+<header>
+  <svg viewBox="0 0 400 400" aria-label="Logo propuesto"><rect width="400" height="400" fill="#2f4f43"/><g fill="#e9b949"><rect x="96" y="92" width="208" height="20" rx="6"/><rect x="118" y="112" width="16" height="46" rx="4"/><rect x="266" y="112" width="16" height="46" rx="4"/></g><text x="200" y="262" text-anchor="middle" font-family="Georgia,'Times New Roman',serif" font-weight="700" font-size="124" fill="#f6efe4" letter-spacing="4">CM</text><text x="200" y="312" text-anchor="middle" font-family="Arial,Helvetica,sans-serif" font-weight="700" font-size="25" fill="#e9b949" letter-spacing="7">MUEBLES</text></svg>
+  <div><small>Para empezar</small><h1>¡Bienvenido, Comercial Mauro!</h1><p>Aquí está todo lo que incluye tu plan. Abajo confirmas tus datos y eliges los productos del primer mes.</p></div>
+</header>
+
+<h2>Lo que recibes cada mes</h2>
+<div class="cifras">
+  <div><b>12</b><span>reels<br>3 por semana</span></div>
+  <div><b>4</b><span>posts<br>1 por semana</span></div>
+  <div><b>1</b><span>visita al local<br>para grabar</span></div>
+  <div><b>0</b><span>preocupaciones:<br>todo queda programado</span></div>
+</div>
+<p>Los videos cuentan cómo se vive cada mueble en la casa, muestran el local y dicen dónde están y cómo escribirles. Llevan voz, música, subtítulos y los colores de Comercial Mauro. Los posts muestran los productos del mes con sus precios y las entregas.</p>
+
+<h2>Cómo funciona</h2>
+<div class="pasos">
+  <div class="paso"><div><h3>Una visita al mes</h3>Voy al local, conversamos los precios del mes y qué quieres destacar, y grabo fotos y videos cortos de los muebles. Toma entre 1 y 2 horas.</div></div>
+  <div class="paso"><div><h3>Armo el contenido del mes</h3>Con ese material hago los 12 reels y los 4 posts.</div></div>
+  <div class="paso"><div><h3>Tú lo apruebas</h3>Te los mando por WhatsApp. Tienes una ronda de cambios por cada pieza.</div></div>
+  <div class="paso"><div><h3>Queda todo programado</h3>En Instagram y Facebook, con su texto y su día. Salen solos durante el mes.</div></div>
+</div>
+
+<h2>Precio</h2>
+<div class="precios">
+  <div class="precio fuerte"><small>Lanzamiento · primer mes</small><b>$60.000</b>al mes</div>
+  <div class="precio"><small>Desde el mes 2</small><b>$80.000</b>al mes</div>
+</div>
+<div class="dos">
+  <div class="carta"><h3>Condiciones</h3><ul>
+    <li>Pago mensual, por adelantado.</li><li>Una ronda de cambios por pieza.</li>
+    <li>Los precios y productos los confirmas tú: nunca se publica un precio que no hayas confirmado.</li></ul></div>
+  <div class="carta"><h3>No incluye</h3><ul>
+    <li>Responder mensajes ni comentarios.</li><li>Contenido extra o urgente fuera del plan (se cobra aparte).</li><li>Una segunda visita en el mismo mes.</li></ul></div>
+  <div class="carta"><h3>Para el día de la visita</h3><ul>
+    <li>Los productos a destacar <b>limpios</b> y, si se puede, <b>sin el plástico</b> por un momento.</li>
+    <li>Un <b>espacio despejado</b> y <b>buena luz</b>.</li>
+    <li>Detalles para mostrar: <b>abrir cajones y puertas, prender las luces</b> de los tocadores.</li></ul></div>
+</div>
+
+<form id="f" onsubmit="return false">
+  <h2>Tu negocio</h2>
+  <div class="preg"><span class="t">¿El nombre del negocio es "Comercial Mauro"?</span>
+    <div class="chips" data-campo="nombreOk" data-uno="1" data-ops="Sí, así está bien|Es otro nombre"></div>
+    <input type="text" id="nombre" placeholder="Si es otro, escríbelo aquí"></div>
+
+  <div class="preg"><span class="t">¿Cuál es la dirección exacta del local?</span><div class="ay">En Instagram aparecen dos versiones distintas.</div>
+    <div class="chips" data-campo="direccion" data-uno="1" data-ops="Av. Valparaíso 818, Local 100|Viana 819, Local 100|Otra"></div>
+    <input type="text" id="direccionOtra" placeholder="Si es otra, escríbela aquí"></div>
+
+  <div class="preg"><span class="t">¿Te gusta el logo de arriba?</span><div class="ay">Es una propuesta: el negocio no tenía logo.</div>
+    <div class="chips" data-campo="logo" data-uno="1" data-ops="Me gusta así|Me gusta con cambios|Prefiero otro"></div>
+    <input type="text" id="logoCambios" placeholder="¿Qué le cambiarías?"></div>
+
+  <div class="preg"><span class="t">¿Los muebles los fabrican ustedes o son hechos en Chile?</span><div class="ay">Si es así, lo podemos decir en los videos.</div>
+    <div class="chips" data-campo="origen" data-uno="1" data-ops="Los fabricamos nosotros|Son hechos en Chile|Algunos sí, otros no|No sé"></div></div>
+
+  <div class="preg"><label class="t" for="horario">¿Tu horario sigue siendo de lunes a sábado, de 9:30 a 18:45?</label>
+    <input type="text" id="horario" placeholder="Si cambió, escribe el nuevo horario"></div>
+
+  <div class="preg"><span class="t">¿Las entregas siguen con estos valores?</span><div class="ay">Viña, Quilpué y Villa Alemana: $15.000 · Valparaíso, Concón y Quintero: $20.000</div>
+    <div class="chips" data-campo="entregasOk" data-uno="1" data-ops="Sí, siguen igual|Cambiaron"></div>
+    <input type="text" id="entregas" placeholder="Si cambiaron, escribe los valores nuevos"></div>
+
+  <h2>Productos que quieres destacar</h2>
+  <div class="preg"><span class="t">¿Qué productos mostramos el primer mes?</span>
+    <div class="ay">Agrega cada producto con su nombre y precio. Si puedes, toca el cuadro para ponerle una foto: así sé cuál es y lo grabo en la visita. Puedes borrar los que no quieras y sumar los que falten.</div>
+    <div id="productos"></div>
+    <button type="button" class="sumar" id="sumar">+ Agregar producto</button></div>
+
+  <h2>Tu primer mes</h2>
+  <div class="preg"><span class="t">¿Puedes mandarme fotos y videos originales?</span><div class="ay">Los de las muestras son capturas de Instagram. Los originales del celular se ven mucho mejor.</div>
+    <div class="chips" data-campo="material" data-uno="1" data-ops="Sí, te los mando por WhatsApp|Mejor grábalos tú en la visita"></div></div>
+
+  <div class="preg"><label class="t" for="visita">¿Qué día y hora te acomoda para la primera visita?</label>
+    <input type="text" id="visita" placeholder="Ej.: martes en la mañana"></div>
+
+  <div class="preg"><label class="t" for="otro">¿Algo más que quieras que sepa?</label>
+    <textarea id="otro" placeholder="Algo que no quieras mostrar, un producto nuevo, una oferta…"></textarea></div>
+</form>
+<footer>Danko · contenido para redes</footer>
+</main>
+<div class="barra"><div><div class="progreso"><span id="pt"></span><i><b id="pb"></b></i></div><button class="enviar" id="enviar">Enviar por WhatsApp</button></div></div>
+<div id="paso2"><div class="caja"><h3>¡Listo! Último paso</h3><p id="p2texto"></p>
+  <button class="enviar" id="mandarFotos">Mandar las fotos</button><button class="sec" id="cerrar">Ya las mandé / no tengo fotos</button></div></div>
+
+<script>
+const CONFIG = {whatsapp: '56957147843'};   // número de Danko: ahí llegan las respuestas
+const $ = id => document.getElementById(id), GUARDA = 'bienvenida-mauro-v2', elegidos = {};
+let guardado = {}; try { guardado = JSON.parse(localStorage.getItem(GUARDA) || '{}'); } catch {}
+const guardar = () => { const g = {}; textos().forEach(t => g[t.id] = t.value); for (const [k, s] of Object.entries(elegidos)) g['_' + k] = [...s];
+  g.productos = productos.map(p => ({nombre:p.nombre, precio:p.precio, medidas:p.medidas})); try { localStorage.setItem(GUARDA, JSON.stringify(g)); } catch {} };
+
+// ---------- opciones para tocar ----------
+document.querySelectorAll('[data-campo]').forEach(g => {
+  const campo = g.dataset.campo, uno = g.dataset.uno; elegidos[campo] = new Set(guardado['_' + campo] || []);
+  g.innerHTML = g.dataset.ops.split('|').map(t => `<button type="button" class="chip" data-v="${t}">${t}</button>`).join('');
+  const pintar = () => g.querySelectorAll('button').forEach(b => b.classList.toggle('on', elegidos[campo].has(b.dataset.v)));
+  g.addEventListener('click', ev => { const b = ev.target.closest('button'); if (!b) return; const s = elegidos[campo], v = b.dataset.v;
+    if (s.has(v)) s.delete(v); else { if (uno) s.clear(); s.add(v); } pintar(); cambio(); });
+  pintar(); });
+const textos = () => [...document.querySelectorAll('#f > .preg input[type=text], #f > .preg textarea')].filter(t => t.id);
+textos().forEach(t => { if (guardado[t.id]) t.value = guardado[t.id]; t.addEventListener('input', cambio); });
+
+// ---------- productos a destacar: nombre, precio, medidas y foto; se pueden sumar y borrar ----------
+// Parte con los 4 productos que ya están en su Instagram (con el precio de entonces como ejemplo, para que lo confirme).
+let productos = (guardado.productos || [{nombre:'Comedor con 4 sillas', precio:'', medidas:'90 × 120 cm', ej:'$320.000'}, {nombre:'Tocador grande con luces', precio:'', medidas:'160 × 80 × 50 cm', ej:'$135.000'},
+  {nombre:'Tocador con cajones y bandejas', precio:'', medidas:'160 × 100 × 50 cm', ej:'$175.000'}, {nombre:'Closet 3 cuerpos', precio:'', medidas:'180 × 110 × 50 cm', ej:'$140.000'}]).map(p => ({...p, foto:null}));
+const esc = s => String(s ?? '').replace(/[&<>"]/g, c => ({'&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;'}[c]));
+function dibujar() {
+  $('productos').innerHTML = productos.map((p, k) => `<div class="producto" data-k="${k}">
+    <label class="foto${p.foto ? ' con' : ''}" style="${p.foto ? `background-image:url('${p.foto.url}')` : ''}"><b class="num">${k + 1}</b><em>📷</em><span>Agregar foto</span>
+      <input type="file" accept="image/*" data-k="${k}"></label>
+    <div class="campos"><input type="text" placeholder="Nombre del producto" value="${esc(p.nombre)}" data-k="${k}" data-c="nombre">
+      ${p.ej ? `<span class="ay" style="margin:0">En tu Instagram estaba a ${p.ej}. ¿Sigue igual?</span>` : ''}
+      <div class="dos2"><input type="text" inputmode="numeric" placeholder="Precio" value="${esc(p.precio)}" data-k="${k}" data-c="precio">
+        <input type="text" placeholder="Medidas" value="${esc(p.medidas)}" data-k="${k}" data-c="medidas"></div>
+      <button type="button" class="quitar" data-k="${k}">✕ Quitar</button></div></div>`).join('') || '<p class="ay">Todavía no hay productos. Toca "Agregar producto".</p>';
+}
+$('productos').addEventListener('input', ev => { const t = ev.target; if (t.dataset.c) { productos[+t.dataset.k][t.dataset.c] = t.value; cambio(); } });
+$('productos').addEventListener('click', ev => { const b = ev.target.closest('.quitar'); if (!b) return; productos.splice(+b.dataset.k, 1); dibujar(); cambio(); });
+$('productos').addEventListener('change', async ev => { const t = ev.target; if (t.type !== 'file' || !t.files[0]) return;
+  const p = productos[+t.dataset.k]; p.foto = await achicar(t.files[0]); dibujar(); cambio(); });
+$('sumar').addEventListener('click', () => { productos.push({nombre:'', precio:'', medidas:'', foto:null}); dibujar(); cambio();
+  $('productos').querySelector(`.producto:last-child input[data-c="nombre"]`)?.focus(); });
+// la foto se achica a 1280 px antes de mandarla, para que llegue rápido por WhatsApp
+function achicar(file) { return new Promise(ok => { const im = new Image(), u = URL.createObjectURL(file);
+  im.onload = () => { const s = Math.min(1, 1280 / Math.max(im.width, im.height)), c = document.createElement('canvas'); c.width = Math.round(im.width * s); c.height = Math.round(im.height * s);
+    c.getContext('2d').drawImage(im, 0, 0, c.width, c.height); c.toBlob(b => ok({blob:b, url:URL.createObjectURL(b)}), 'image/jpeg', .85); URL.revokeObjectURL(u); };
+  im.onerror = () => ok({blob:file, url:u}); im.src = u; }); }
+dibujar();
+
+// ---------- progreso ----------
+const PREG = [['_nombreOk', 'nombre'], ['_direccion', 'direccionOtra'], ['_logo', 'logoCambios'], ['_origen'], ['horario'], ['_entregasOk', 'entregas'], ['productos'], ['_material'], ['visita']];
+function cambio() {
+  guardar(); const g = {}; textos().forEach(t => g[t.id] = t.value); for (const [k, s] of Object.entries(elegidos)) g['_' + k] = [...s];
+  const r = PREG.filter(c => c.some(k => k === 'productos' ? productos.some(p => p.nombre.trim()) : k.startsWith('_') ? g[k].length : g[k].trim())).length;
+  $('pt').textContent = `${r} de ${PREG.length} respondidas`; $('pb').style.width = (100 * r / PREG.length) + '%';
+}
+cambio();
+
+// ---------- enviar: 1) el texto a WhatsApp; 2) las fotos con el menú Compartir del celular ----------
+const lista = k => [...elegidos[k]].join(', ');
+const nombreArchivo = (p, k) => `${k + 1} - ${(p.nombre || 'producto').replace(/[\\/:*?"<>|]/g, '').slice(0, 40)}.jpg`;
+$('enviar').addEventListener('click', () => {
+  const v = id => $(id).value.trim(), linea = (t, x) => x ? `*${t}:* ${x}\n` : '';
+  const ps = productos.filter(p => p.nombre.trim()).map((p, k) => `${k + 1}. ${p.nombre.trim()}${p.precio.trim() ? ' — ' + p.precio.trim() : ' — (sin precio)'}${p.medidas.trim() ? ' · ' + p.medidas.trim() : ''}${p.foto ? ' 📷' : ''}`);
+  const msg = 'Hola Danko, estos son los datos de Comercial Mauro:\n\n' +
+    linea('Nombre', v('nombre') || lista('nombreOk')) + linea('Dirección', v('direccionOtra') || lista('direccion')) +
+    linea('Logo', [lista('logo'), v('logoCambios')].filter(Boolean).join('. ')) + linea('Origen de los muebles', lista('origen')) +
+    linea('Horario', v('horario') || 'sigue igual') + linea('Entregas', v('entregas') || lista('entregasOk')) +
+    (ps.length ? `*Productos a destacar:*\n${ps.join('\n')}\n` : '') +
+    linea('Fotos y videos', lista('material')) + linea('Primera visita', v('visita')) + linea('Además', v('otro'));
+  const conFoto = productos.filter(p => p.nombre.trim() && p.foto).length;
+  if (conFoto) { $('p2texto').textContent = `Después de enviar el mensaje, vuelve aquí y toca "Mandar las fotos": se abre el menú del celular, eliges WhatsApp y me eliges a mí. Son ${conFoto} foto(s), con el número de cada producto.`; $('paso2').style.display = 'flex'; }
+  window.open('https://wa.me/' + CONFIG.whatsapp + '?text=' + encodeURIComponent(msg), '_blank');
+});
+$('mandarFotos').addEventListener('click', async () => {
+  const files = productos.map((p, k) => p.nombre.trim() && p.foto ? new File([p.foto.blob], nombreArchivo(p, productos.filter(q => q.nombre.trim()).indexOf(p)), {type:'image/jpeg'}) : null).filter(Boolean);
+  if (navigator.canShare && navigator.canShare({files})) { try { await navigator.share({files, text:'Fotos de los productos a destacar (Comercial Mauro)'}); $('paso2').style.display = 'none'; } catch {} }
+  else alert('Este celular no deja compartir fotos desde la página. Mándamelas directo por WhatsApp, con el número de cada producto.');
+});
+$('cerrar').addEventListener('click', () => $('paso2').style.display = 'none');
+</script>
+</body></html>
